@@ -1,0 +1,17 @@
+[
+ {"topic":"Order tracking","text":"You can track your order from My Orders in your account, or with the tracking link in your shipping confirmation email. Tracking updates within 24 hours of dispatch."},
+ {"topic":"Delivery time","text":"Standard delivery takes 3 to 5 business days. Express delivery takes 1 to 2 business days and costs 9.99. Orders placed after 6 PM ship the next business day."},
+ {"topic":"Delayed order","text":"If your order has not arrived within 7 business days, contact us with your order ID. We will trace the parcel with the courier and send a replacement or refund if it is lost."},
+ {"topic":"Return policy","text":"You can return most items within 30 days of delivery if they are unused and in original packaging. Start a return from My Orders, then print the prepaid label."},
+ {"topic":"Refund timeline","text":"Refunds are issued to the original payment method within 5 to 7 business days after we receive the returned item. You will get an email when the refund is processed."},
+ {"topic":"Cancel order","text":"Orders can be cancelled free of charge before they are shipped. Go to My Orders and choose Cancel. Once shipped, you must use the return process."},
+ {"topic":"Payment methods","text":"We accept credit and debit cards, UPI, net banking, and cash on delivery for orders under 5000. Wallet payments are not supported."},
+ {"topic":"Payment failed","text":"If a payment failed but money was debited, the amount is automatically reversed by your bank within 3 to 5 business days. If it is not, share the transaction ID with us."},
+ {"topic":"Change address","text":"You can change the delivery address before the order is shipped from My Orders. After shipping, contact support and we will try to redirect the parcel with the courier."},
+ {"topic":"Damaged or wrong item","text":"If you received a damaged, defective, or wrong item, send a photo and your order ID within 7 days. We will arrange a free pickup and send a replacement or full refund."},
+ {"topic":"Warranty","text":"Electronics carry a 12 month manufacturer warranty from the delivery date. Warranty covers manufacturing defects but not accidental damage. Keep your invoice for claims."},
+ {"topic":"Password reset","text":"On the login page choose Forgot password, enter your registered email, and follow the link we send. The link expires after 30 minutes."},
+ {"topic":"Discount codes","text":"Enter a discount code at checkout in the Promo field. Only one code can be used per order, and codes cannot be applied to items already on sale."},
+ {"topic":"Support hours","text":"Our human support team is available Monday to Saturday, 9 AM to 8 PM IST, by phone at 1800-000-1234 or email support@example.com. This chatbot is available 24/7."},
+ {"topic":"Product availability","text":"If an item shows Out of Stock, use Notify Me on the product page and we will email you when it is back. Restocks usually take 2 to 3 weeks."}
+]

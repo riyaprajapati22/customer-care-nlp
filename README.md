@@ -16,4 +16,3 @@ Without a key, an offline generator composes replies from the retrieved passages
 
 ## Extend
 Add entries to `knowledge_base.json` and example phrases to `intents.json`; no code changes needed.
-# customer-care-nlp

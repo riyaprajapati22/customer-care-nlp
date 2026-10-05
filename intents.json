@@ -1,0 +1,12 @@
+{
+ "order_status": ["where is my order","track my package","order not arrived yet","when will my parcel be delivered","delivery status","my order is late","tracking link not working"],
+ "refund_return": ["i want to return this item","how do i get a refund","refund not received","return policy","send back product money back","exchange my product","when will i get my money back"],
+ "cancel_order": ["cancel my order","i want to cancel","stop my order from shipping","how to cancel purchase"],
+ "payment": ["payment failed","money deducted but order not placed","which payment methods do you accept","can i pay cash on delivery","upi payment issue","card declined"],
+ "complaint": ["i received a damaged product","wrong item delivered","product is defective","this is terrible service","item is broken","you sent me the wrong size"],
+ "account": ["forgot my password","cannot login","reset my password","change my address","update my email","my account is locked"],
+ "product_info": ["is this product in stock","warranty on this phone","do you have this in black","when will it be back in stock","any discount code available","promo code not working"],
+ "human_request": ["talk to a human","connect me to an agent","i want to speak to a person","customer care number","support hours"],
+ "greeting": ["hi","hello","hey there","good morning","good evening"],
+ "thanks": ["thanks","thank you so much","great that helped","ok thanks bye","cool thanks"]
+}

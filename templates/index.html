@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Care Desk</title>
+<style>
+:root{--bg:#eef2f1;--panel:#fff;--ink:#14231f;--mute:#5d6f69;--brand:#0e5c4f;--me:#0e5c4f;--bot:#e4ece9;--warn:#b3541e}
+@media(prefers-color-scheme:dark){:root{--bg:#0d1513;--panel:#16211e;--ink:#e6efec;--mute:#8fa39c;--brand:#4cb8a3;--me:#1c6f5f;--bot:#22312d;--warn:#e79a63}}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.5 "Source Sans 3",system-ui,sans-serif;display:flex;justify-content:center}
+.app{width:100%;max-width:720px;height:100%;display:flex;flex-direction:column;background:var(--panel)}
+header{padding:16px 20px;border-bottom:1px solid var(--bot);display:flex;justify-content:space-between;align-items:center}
+h1{font:600 20px Georgia,serif;margin:0}header small{color:var(--mute);display:block}
+button{font:inherit;cursor:pointer}
+#reset{background:none;border:1px solid var(--bot);color:var(--mute);border-radius:6px;padding:4px 10px}
+#log{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:10px}
+.m{max-width:80%;padding:10px 14px;border-radius:14px;white-space:pre-wrap}
+.me{align-self:flex-end;background:var(--me);color:#fff;border-bottom-right-radius:4px}
+.bot{align-self:flex-start;background:var(--bot);border-bottom-left-radius:4px}
+.bot.esc{border-left:4px solid var(--warn)}
+.meta{align-self:flex-start;font-size:12px;color:var(--mute);margin:-6px 0 0 4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips button{background:none;border:1px solid var(--brand);color:var(--brand);border-radius:16px;padding:4px 12px}
+form{display:flex;gap:8px;padding:14px 20px;border-top:1px solid var(--bot)}
+input{flex:1;padding:10px 12px;border-radius:8px;border:1px solid var(--mute);background:var(--panel);color:var(--ink);font:inherit}
+form button{background:var(--brand);color:#fff;border:0;border-radius:8px;padding:0 18px}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+</style></head><body>
+<div class="app">
+<header><div><h1>Care Desk</h1><small>Ask in your own words. Typos are fine.</small></div><button id="reset">New chat</button></header>
+<div id="log" aria-live="polite"></div>
+<form id="f"><input id="t" autocomplete="off" placeholder="e.g. my parcel hasnt arrived, whats the refund time?" aria-label="Message"><button>Send</button></form>
+</div>
+<script>
+const log=document.getElementById('log'),t=document.getElementById('t');
+function add(txt,cls,meta){const d=document.createElement('div');d.className='m '+cls;d.textContent=txt;log.append(d);
+ if(meta){const m=document.createElement('div');m.className='meta';
+  m.textContent=`intent: ${meta.intent} (${meta.confidence}) · sentiment: ${meta.sentiment} · ${meta.mode}`;log.append(m)}
+ log.scrollTop=log.scrollHeight;return d}
+function start(){log.innerHTML='';add('Hi, I\'m the Care Desk assistant. What can I help with?','bot');
+ const c=document.createElement('div');c.className='chips';
+ ['Where is my order?','How do I return an item?','Payment failed'].forEach(q=>{const b=document.createElement('button');b.textContent=q;b.onclick=()=>send(q);c.append(b)});log.append(c)}
+async function send(msg){log.querySelector('.chips')?.remove();add(msg,'me');const w=add('...','bot');
+ try{const r=await fetch('/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:msg})});
+  const j=await r.json();w.remove();if(!r.ok){add(j.error||'Something went wrong. Try again.','bot');return}
+  add(j.reply,'bot'+(j.meta.mode==='escalate'?' esc':''),j.meta)}catch(e){w.textContent='Connection lost. Check the server and try again.'}}
+document.getElementById('f').onsubmit=e=>{e.preventDefault();const v=t.value.trim();if(v){t.value='';send(v)}};
+document.getElementById('reset').onclick=async()=>{await fetch('/reset',{method:'POST'});start()};
+start();
+</script></body></html>
